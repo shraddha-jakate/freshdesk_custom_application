@@ -1,0 +1,13 @@
+{
+  "getticket": {
+    "schema": {
+      "method": "POST",
+      "host": "urbanicsupport.freshdesk.com",
+      "path": "/api/v2/tickets",
+      "headers": {
+        "Authorization": "Basic cjVRcmo3QjhSM0NkSkQ2S3ZlS2c=",
+        "Content-Type": "application/json"
+      }
+    }
+  }
+}
