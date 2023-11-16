@@ -12,13 +12,20 @@
 <body>
   <h1>Ticket Information</h1>
   <div id="ticket-info">
-    <strong>Subject:</strong> <span id="ticket-subject"></span><br>
-    <strong>Description:</strong> <span id="ticket-description_text"></span><br>
-    <strong>sender_email:</strong> <span id="ticket-sender_email"></span><br>
-    <button id="create" onclick="create()">Create a ticket</button>
+    <form id="ticket-form">
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" name="subject" required><br>
+      
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" rows="4" cols="50" required></textarea><br>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required><br>
+
+    <button id="create" onclick="createTicket()">Create a ticket</button>
   </div>
 
-  <script defer src="scripts/app.js"></script>
+  <script  src="scripts/app.js"></script>
   <script async type="module" src="https://unpkg.com/@freshworks/crayons@3/dist/crayons/crayons.esm.js"></script>
   <script async nomodule src="https://unpkg.com/@freshworks/crayons@3/dist/crayons/crayons.js"></script>
 </body>

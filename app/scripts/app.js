@@ -6,40 +6,43 @@ async function init() {
   client = await app.initialized();
   client.events.on("app.activated", renderText);
 }
-let ticketSubject;
-let ticketDescription_text;
-let ticketsender_email;
+
 async function renderText() {
+  console.log("saff")
   try {
-    const data = await client.data.get("ticket");
-    const ticketInfo = data.ticket;
-    console.log("ticketInfo", ticketInfo);
-    // Extract ticket information
-    ticketSubject = ticketInfo.subject;
-    ticketDescription_text = ticketInfo.description_text;
-    ticketsender_email = ticketInfo.sender_email;
+    // Get values from input fields
+    const subject = document.getElementById("subjectInput").value;
+    const description_text = document.getElementById("description_textInput").value;
+    const sender_email = document.getElementById("sender_emailInput").value;
 
-    document.getElementById("ticket-subject").textContent = ticketSubject;
-    document.getElementById("ticket-description_text").textContent =ticketDescription_text;
-    document.getElementById("ticket-sender_email").textContent = ticketsender_email;
-
-    console.log("Ticket Subject:", ticketSubject);
-    console.log("Ticket Description_text:", ticketDescription_text);
-    console.log("Ticket sender_email :", ticketsender_email);
+    console.log("Subject:", subject);
+    console.log("Description_text:", description_text);
+    console.log("Sender_email:", sender_email);
   } catch (error) {
     console.log(error);
   }
 }
 
-async function create() {
+async function createTicket() {
   console.log("hii");
   try {
+    // Get values from input fields
+   
+    const subject = document.getElementById("subject").value;
+    const description_text = document.getElementById("description").value;
+    const sender_email = document.getElementById("email").value;
+
+    console.log("Subject:", subject);
+    console.log("Description_text:", description_text);
+    console.log("Sender_email:", sender_email);
+
+    // Perform actions to create a new ticket with the input values
     let data = await client.request.invokeTemplate("getticket", {
       context: {},
       body: JSON.stringify({
-        subject: ticketSubject,
-        description:ticketDescription_text,
-        email:ticketsender_email,
+        subject: subject,
+        description: description_text,
+        email: sender_email,
       }),
     });
     console.log(data);
